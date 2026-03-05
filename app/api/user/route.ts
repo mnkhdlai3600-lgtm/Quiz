@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
   const svixSignature = req.headers.get("svix-signature");
 
   if (!svixId || !svixTimestamp || !svixSignature) {
+    console.log("Missing required headers");
     return NextResponse.json(
       { error: "Missing required headers" },
       { status: 400 },
@@ -46,6 +47,7 @@ export async function POST(req: NextRequest) {
     }) as Event;
 
     if (event.type !== "user.created") {
+      console.log("Unsupported event type:", event.type);
       return NextResponse.json(
         { error: "Unsupported event type" },
         { status: 400 },
@@ -57,6 +59,7 @@ export async function POST(req: NextRequest) {
     const email = email_adresses[0]?.email_address;
 
     if (!email) {
+      console.log("Email address not found");
       return NextResponse.json(
         { error: "Email address not found" },
         { status: 400 },
