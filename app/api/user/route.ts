@@ -73,6 +73,11 @@ export async function POST(req: NextRequest) {
         email: email_adresses[0].email_address,
       },
     });
+
+    return NextResponse.json(
+      { message: "User created successfully" },
+      { status: 201 },
+    );
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to verify webhook" },
