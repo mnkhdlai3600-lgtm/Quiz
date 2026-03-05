@@ -15,7 +15,7 @@ type Event = {
 };
 
 export async function POST(req: NextRequest) {
-  const webhookSecret = process.env.CLERK_SECRET_KEY;
+  const webhookSecret = process.env.CLERK_WEBHOOK_SECRET;
 
   if (!webhookSecret) {
     return NextResponse.json(
