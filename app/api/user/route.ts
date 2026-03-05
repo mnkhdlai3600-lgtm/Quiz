@@ -8,7 +8,7 @@ type Event = {
     id: string;
     first_name: string;
     last_name: string;
-    email_adresses: {
+    email_addresses: {
       email_address: string;
     }[];
   };
@@ -54,9 +54,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { id, first_name, last_name, email_adresses } = event.data;
+    const { id, first_name, last_name, email_addresses } = event.data;
 
-    const email = email_adresses[0]?.email_address;
+    const email = email_addresses[0]?.email_address;
 
     if (!email) {
       console.log("Email address not found");
@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
       data: {
         clerkId: id,
         userName: `${first_name} ${last_name}`,
-        email: email_adresses[0].email_address,
+        email: email_addresses[0].email_address,
       },
     });
 
