@@ -1,6 +1,7 @@
 import { Webhook } from "svix";
-import prisma from "@/lib/prisma";
+
 import { NextResponse, NextRequest } from "next/server";
+import prisma from "@/app/lib/prisma";
 
 type Event = {
   type: string;

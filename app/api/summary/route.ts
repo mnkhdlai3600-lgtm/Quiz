@@ -1,9 +1,4 @@
 import { NextResponse, NextRequest } from "next/server";
-import OpenAI from "openai";
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY!,
-});
 
 export async function POST(req: NextRequest) {
   const { content } = await req.json();
@@ -28,7 +23,7 @@ export async function POST(req: NextRequest) {
   const data = await response.json();
   const text = data.output[0].content[0].text;
 
-  const formatedText = text.replace(/\\n/g, "");
+  const formattedText = text.replace(/\n/g, " ");
 
-  return NextResponse.json(formatedText || "");
+  return NextResponse.json(formattedText || "");
 }
