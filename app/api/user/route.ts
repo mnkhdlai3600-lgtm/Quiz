@@ -67,13 +67,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    await prisma.user.create({
-      data: {
-        clerkId: id,
-        userName: `${first_name} ${last_name}`,
-        email: email_addresses[0].email_address,
-      },
-    });
+    // await prisma.user.create({
+    //   data: {
+    //     email,
+    //     clerkId: id,
+    //     userName: `${first_name} ${last_name}`,
+    //   },
+    // });
 
     return NextResponse.json(
       { message: "User created successfully" },
